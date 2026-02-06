@@ -194,4 +194,64 @@ To ensure total visibility, I audited the server logs to confirm my host machine
   
 <img width="1559" height="176" alt="Captura de ecrã 2026-02-06 112140" src="https://github.com/user-attachments/assets/e54fc6c0-235e-41f9-8fe4-066ddb11d89c" />
 
+---------------------------------------------------------------
+
+Title: Linux Storage Expansion & Secure MariaDB Deployment
+
+The Scenario:
+
+    Simulated a production "Disk Full" crisis on a Rocky Linux 9 environment. Executed a live storage migration and expansion, followed by the deployment of a hardened database layer with strict network and user-level access controls.
+
+  Phase 1: Storage "Hotfix" (LVM)
+
+    The Problem: /mnt/data reached 100% capacity, threatening service stability.
+
+    The Solution: * Provisioned a new 2GB physical disk (/dev/sdc).
+
+        Initialized as a Physical Volume (using pvcreate).
+
+        Extended the Volume Group (vgextend) and Logical Volume (lvextend).
+
+        Performed a live filesystem expansion using xfs_growfs.
+
+    Result: Zero downtime storage scaling.
+
+
+    <img width="647" height="253" alt="Captura de ecrã 2026-02-06 124321" src="https://github.com/user-attachments/assets/f4214ef3-90b4-449d-82f4-f7fc47a09b14" />
+
+
+🛡 Phase 2: Database Hardening (MariaDB)
+
+    Deployment: Installed and secured MariaDB Server via mysql_secure_installation.
+
     
+
+    Security Posture: * Disabled remote root login.
+
+        Removed anonymous users and test databases.
+
+        Network Security: Implemented a firewalld Rich Rule to restrict database port (3306) access strictly to the local loopback/web-server IP.
+
+
+
+<img width="1277" height="524" alt="Captura de ecrã 2026-02-06 124425" src="https://github.com/user-attachments/assets/5db11266-f9b0-4995-ab65-eb8dbc5a1986" />
+
+        
+
+    Access Control: Created a "Least Privilege" application user (dev_user) with restricted DML permissions (SELECT, INSERT, UPDATE) only on the specific application schema.
+
+ Verification
+
+    Permission Check: Verified that dev_user receives Error 1044 when attempting unauthorized administrative actions.
+
+
+<img width="915" height="222" alt="Captura de ecrã 2026-02-06 124557" src="https://github.com/user-attachments/assets/b0d34c71-376f-4fc7-85eb-1ed49a1bca33" />
+
+
+
+    Network Check: Confirmed port 3306 is "Filtered/Timed Out" from external scans, verifying the firewall logic.
+
+
+    <img width="841" height="265" alt="Captura de ecrã 2026-02-06 123815" src="https://github.com/user-attachments/assets/f02c5948-e906-4f7b-acf3-c8b7621a9c58" />
+
+
