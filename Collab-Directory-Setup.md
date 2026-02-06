@@ -44,6 +44,8 @@ Bash
 # Step 1: Initialize the Physical Volume (PV)
 sudo pvcreate /dev/sdb
 
+
+
 # Step 2: Create a Volume Group (VG) pool named 'research_vg'
 sudo vgcreate research_vg /dev/sdb
 
@@ -55,6 +57,10 @@ sudo mkfs.xfs /dev/research_vg/data_lv
 sudo mkdir -p /mnt/data
 sudo mount /dev/research_vg/data_lv /mnt/data
 
+using lsblk:
+<img width="484" height="164" alt="imagem" src="https://github.com/user-attachments/assets/f6c36377-1450-44c7-807f-32c483a3ec13" />
+We can see that sdb is already there. 
+
 3. Validation & Persistence
 
     UUID Mapping: Retrieved the unique ID via blkid /dev/research_vg/data_lv.
@@ -63,5 +69,9 @@ sudo mount /dev/research_vg/data_lv /mnt/data
 
    Ran sudo umount /mnt/data followed by sudo mount -a. The lack of error messages confirmed the configuration was safe for reboot. Rebooted and mount is still untouched.
 
-During the rest of the day, I will brush up
+catting fstab: 
+<img width="842" height="291" alt="imagem" src="https://github.com/user-attachments/assets/5de02dec-293a-44c7-8fbc-8bd5cbea6588" />
+
+
+
     
