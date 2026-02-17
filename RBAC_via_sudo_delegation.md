@@ -1,4 +1,4 @@
-The Scenario
+<img width="301" height="196" alt="imagem" src="https://github.com/user-attachments/assets/dcf3bb6f-82f8-4570-bda3-7630976dab95" />The Scenario
 
 In a growing infrastructure, giving every user full root access is a high-risk security vulnerability. This project demonstrates how to delegate specific system privileges to different organizational roles (Interns vs. Seniors) using the "Principle of Least Privilege."
 The Architecture (The "How-To")
@@ -45,8 +45,11 @@ running this command - !/bin/bash - creates a very funny situation.
 dev_senior is now root. Using vi and running the command !/bin/bash creates an escape shell without asking any question (! forces vi to not ask any questions.)
 
 So if he's root....
+Let's try a cat /etc/shadow :
 
-<img width="1094" height="559" alt="Captura de ecrã 2026-02-17 112510" src="https://github.com/user-attachments/assets/8e3f97c4-f0b3-4fb8-8fba-01f2eb5b93ee" />
+
+<img width="301" height="196" alt="Captura de ecrã 2026-02-17 121454" src="https://github.com/user-attachments/assets/d61d924e-597b-45a7-9669-be21145fa191" />
+
 
 There goes everyone's secrets.
 
