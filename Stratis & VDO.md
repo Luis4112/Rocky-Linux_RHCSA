@@ -43,7 +43,7 @@ mount -o remount,rw /
 and fixing the /etc/fstab file mistake that I had done.
 rebooted, everything ran as it should've had.
 
-🛠️ Implementation 2: VDO (Virtual Data Optimizer)
+Implementation 2: VDO (Virtual Data Optimizer)
 
 VDO provides inline data reduction. In RHEL 9, this is integrated directly into the LVM stack.
 LVM-VDO Integration
