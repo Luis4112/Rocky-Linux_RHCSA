@@ -1,5 +1,5 @@
-Modern RHEL 9 Storage Architecture (Stratis & VDO)
-Overview
+# Modern RHEL 9 Storage Architecture (Stratis & VDO)
+ Overview
 
 This project demonstrates the implementation of modern, layered storage solutions in RHEL 9/Rocky Linux 9. The objective was to move beyond traditional LVM to implement Thin Provisioning via Stratis and Data Deduplication/Compression via VDO (Virtual Data Optimizer).
 Implementation 1: Stratis Layered Storage
@@ -24,7 +24,7 @@ Configuration Steps
   <img width="1158" height="249" alt="Screenshot_20260223_102642" src="https://github.com/user-attachments/assets/44291bd5-510c-4d02-89df-f0da20d26369" />
 
 
-Troubleshooting: Boot Persistence
+# Troubleshooting: Boot Persistence
 
 Problem: During initial testing, the system failed to boot and dropped into Emergency Mode.
 
